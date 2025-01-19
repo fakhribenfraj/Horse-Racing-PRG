@@ -14,9 +14,6 @@ import { DataFeed } from "./DataFeed";
 export const Content = () => {
   return (
     <div className="stakeContent">
-      {/* <div class="example__demo example__demo--radial-gradient"> */}
-
-      {/* </div> */}
       <Slide />
       <DataFeed />
       <Munityhub />

@@ -242,14 +242,13 @@
     }
   }
   .bottomBtn {
+    --color-primary: rgba(192, 61, 255, 1);
+    --color-secondary: rgba(95, 61, 255, 0.7);
+
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: linear-gradient(
-      to right,
-      rgba(192, 61, 255, 1),
-      rgba(95, 61, 255, 0.7)
-    );
+
     width: 312px;
     height: 51px;
     font-family: RNS Sanz;
@@ -260,14 +259,34 @@
     text-align: left;
     color: white;
     border-radius: 10px;
-  }
-  .bottomBtn:hover {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
     background-image: linear-gradient(
       to right,
-      rgba(95, 61, 255, 0.7),
-      rgba(192, 61, 255, 1)
+      var(--color-secondary) var(--color-primary)
     );
   }
+  .bottomBtn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 200%;
+    height: 100%;
+    background-image: linear-gradient(
+      to right,
+      var(--color-secondary),
+      var(--color-primary),
+      var(--color-secondary)
+    );
+    transition: transform 0.4s;
+    z-index: -1;
+  }
+  .bottomBtn:hover::before {
+    transform: translateX(40%);
+  }
+
   .buttonWrap {
     display: flex;
     justify-content: center;
